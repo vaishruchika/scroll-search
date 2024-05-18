@@ -31,11 +31,11 @@ const ScrollSearch = () => {
       setSearchedResults(
         data.filter(
           (item) =>
-            item.id.toLowerCase().includes(search) ||
-            item.name.toLowerCase().includes(search) ||
-            item.address.toLowerCase().includes(search) ||
-            item.pincode.toLowerCase().includes(search) ||
-            item.items.find((item) => item.toLowerCase().includes(search)) !==
+            item.id.toLowerCase().includes(search.toLowerCase()) ||
+            item.name.toLowerCase().includes(search.toLowerCase()) ||
+            item.address.toLowerCase().includes(search.toLowerCase()) ||
+            item.pincode.toLowerCase().includes(search.toLowerCase()) ||
+            item.items.find((item) => item.toLowerCase().includes(search.toLowerCase())) !==
               undefined
         )
       );
@@ -76,7 +76,7 @@ const ScrollSearch = () => {
           <SearchBar setSearch={setSearch} handleKeyDown={handleKeyDown} />
           <SearchResults
             data={searchedResults}
-            search={search}
+            search={search.toLowerCase()}
             activeOption={activeOption}
           />
         </StyledContainer>
