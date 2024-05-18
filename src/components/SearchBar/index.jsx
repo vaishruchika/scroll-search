@@ -6,7 +6,7 @@ const SearchBar = ({ setSearch, handleKeyDown }) => {
   return (
     <StyledInput
       placeholder="Search by name/ address/ pincode / items/ id"
-      onChange={(e) => setSearch(e.target.value)}
+      onChange={(e) => setSearch(e.target.value.toLowerCase())}
       onKeyDown={handleKeyDown}
     />
   );
