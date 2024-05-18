@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useRef } from "react";
 import { capitalizeFirstLetter } from "../../utils";
 import { StyledCard, style } from "./index.styled";
 
 const Card = ({ data, search, index, activeOption }) => {
+  const scrollRef = useRef();
   // highlight the queried string
   const strColor = (str) => {
     const regex = new RegExp(search, "gi");
@@ -16,7 +17,7 @@ const Card = ({ data, search, index, activeOption }) => {
             <>
               <span>{part}</span>
               <span style={style}>
-                {part.charAt(part.length - 1) === " " || part===''
+                {part.charAt(part.length - 1) === " " || part === ""
                   ? capitalizeFirstLetter(search)
                   : search}
               </span>
@@ -37,6 +38,8 @@ const Card = ({ data, search, index, activeOption }) => {
           : ""
       }
       id={index}
+      ref={scrollRef}
+      onMouseOver={() => scrollRef?.current?.scrollIntoView()}
     >
       <div>{strColor(data.id)}</div>
       <div>{strColor(data.name)}</div>
