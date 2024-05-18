@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { capitalizeFirstLetter } from "../../utils";
 import { StyledCard, style } from "./index.styled";
 
-const Card = ({ data, search, index, activeOption }) => {
+const Card = ({ data, search, index, activeOption, setActiveOption }) => {
   const scrollRef = useRef();
   // highlight the queried string
   const strColor = (str) => {
@@ -30,16 +30,15 @@ const Card = ({ data, search, index, activeOption }) => {
 
   return (
     <StyledCard
-      className={
-        activeOption === index
-          ? `option-active`
-          : activeOption > -1
-          ? `no-hover`
-          : ""
-      }
+      className={activeOption === index ? `option-active` : ""}
       id={index}
       ref={scrollRef}
-      onMouseOver={() => scrollRef?.current?.scrollIntoView()}
+      onMouseOver={() => {
+        scrollRef?.current?.scrollIntoView({
+          behavior: "smooth",
+        });
+        setActiveOption(index);
+      }}
     >
       <div>{strColor(data.id)}</div>
       <div>{strColor(data.name)}</div>

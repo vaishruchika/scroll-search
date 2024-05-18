@@ -2,9 +2,15 @@ import React from "react";
 import Card from "../Card";
 import { SearchResultsContainer } from "./index.styled";
 
-const SearchResults = ({ data, search, activeOption }) => {
+const SearchResults = ({
+  data,
+  search,
+  activeOption,
+  handleKeyDown,
+  setActiveOption,
+}) => {
   return (
-    <SearchResultsContainer>
+    <SearchResultsContainer onKeyDown={handleKeyDown}>
       {data.map((item, index) => (
         <Card
           key={index}
@@ -12,6 +18,7 @@ const SearchResults = ({ data, search, activeOption }) => {
           search={search}
           activeOption={activeOption}
           index={index}
+          setActiveOption={setActiveOption}
         />
       ))}
     </SearchResultsContainer>

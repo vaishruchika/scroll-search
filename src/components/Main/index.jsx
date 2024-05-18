@@ -35,8 +35,9 @@ const ScrollSearch = () => {
             item.name.toLowerCase().includes(search.toLowerCase()) ||
             item.address.toLowerCase().includes(search.toLowerCase()) ||
             item.pincode.toLowerCase().includes(search.toLowerCase()) ||
-            item.items.find((item) => item.toLowerCase().includes(search.toLowerCase())) !==
-              undefined
+            item.items.find((item) =>
+              item.toLowerCase().includes(search.toLowerCase())
+            ) !== undefined
         )
       );
     } else setSearchedResults([]);
@@ -63,10 +64,6 @@ const ScrollSearch = () => {
     } else setActiveOption(-1);
   };
 
-  document.addEventListener("mousemove", () => {
-    setActiveOption(-1);
-  });
-
   return (
     <>
       {isLoading ? (
@@ -78,6 +75,8 @@ const ScrollSearch = () => {
             data={searchedResults}
             search={search.toLowerCase()}
             activeOption={activeOption}
+            handleKeyDown={handleKeyDown}
+            setActiveOption={setActiveOption}
           />
         </StyledContainer>
       )}
