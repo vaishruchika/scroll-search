@@ -33,7 +33,8 @@ const Card = ({ data, search, index, activeOption, setActiveOption }) => {
       className={activeOption === index ? `option-active` : ""}
       id={index}
       ref={scrollRef}
-      onMouseOver={() => {
+      onMouseOver={(e) => {
+        e.stopPropagation();
         scrollRef?.current?.scrollIntoView({
           behavior: "smooth",
         });

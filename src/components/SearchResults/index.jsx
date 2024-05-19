@@ -6,11 +6,10 @@ const SearchResults = ({
   data,
   search,
   activeOption,
-  handleKeyDown,
   setActiveOption,
 }) => {
   return (
-    <SearchResultsContainer onKeyDown={handleKeyDown}>
+    <SearchResultsContainer>
       {data.map((item, index) => (
         <Card
           key={index}

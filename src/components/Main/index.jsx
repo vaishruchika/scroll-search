@@ -66,15 +66,14 @@ const ScrollSearch = () => {
   return (
     <>
       {isLoading ? (
-        <p>loading...</p>
+        <header>Loading...</header>
       ) : (
-        <StyledContainer>
-          <SearchBar setSearch={setSearch} handleKeyDown={handleKeyDown} />
+        <StyledContainer onKeyDown={handleKeyDown}>
+          <SearchBar setSearch={setSearch}/>
           <SearchResults
             data={searchedResults}
             search={search}
             activeOption={activeOption}
-            handleKeyDown={handleKeyDown}
             setActiveOption={setActiveOption}
           />
         </StyledContainer>
