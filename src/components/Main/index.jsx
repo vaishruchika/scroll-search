@@ -59,6 +59,7 @@ const ScrollSearch = () => {
       } else if (e.key === "ArrowUp" && activeOption > 0) {
         setActiveOption((prev) => prev - 1);
       } else if (e.key === "Enter" && activeOption >= 0) {
+        e.preventDefault();
       }
     } else setActiveOption(-1);
   };
@@ -69,7 +70,7 @@ const ScrollSearch = () => {
         <header>Loading...</header>
       ) : (
         <StyledContainer onKeyDown={handleKeyDown}>
-          <SearchBar setSearch={setSearch}/>
+          <SearchBar setSearch={setSearch} />
           <SearchResults
             data={searchedResults}
             search={search}
