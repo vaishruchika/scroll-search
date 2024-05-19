@@ -1,9 +1,8 @@
-import React, { useRef } from "react";
+import React from "react";
 import { capitalizeFirstLetter } from "../../utils";
 import { StyledCard, style } from "./index.styled";
 
 const Card = ({ data, search, index, activeOption, setActiveOption }) => {
-  const scrollRef = useRef();
   // highlight the queried string
   const strColor = (str) => {
     const regex = new RegExp(search, "gi");
@@ -27,17 +26,12 @@ const Card = ({ data, search, index, activeOption, setActiveOption }) => {
       </div>
     );
   };
-
+  
   return (
     <StyledCard
       className={activeOption === index ? `option-active` : ""}
       id={index}
-      ref={scrollRef}
-      onMouseEnter={(e) => {
-        e.stopPropagation();
-        scrollRef?.current?.scrollIntoView({
-          behavior: "smooth",
-        });
+      onPointerMove={(e) => {
         setActiveOption(index);
       }}
     >
